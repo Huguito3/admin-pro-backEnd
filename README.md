@@ -1,3 +1,24 @@
 # AdminPro - BackEnd
 
-Ejecutar npm install...
+BackEnd for an Angular FE app. Uses mongo Db, to storageinformation about users, doctos and hospital administration.
+
+## Installation
+
+After downloading from GIT, inside the project folder:
+```bash
+npm install
+npm run start:dev
+```
+
+## Built With
+//node
+[Node](https://nodejs.org/en/)
+[Express](https://expressjs.com/), web Framework
+[Nodemon](https://www.npmjs.com/package/nodemon), automatically restarting the node application when file changes in the directory are detected.
+[Mongoose](https://mongoosejs.com/), to connnect node with Mongo.
+[DotEnv](https://www.npmjs.com/package/dotenv), to manipulate environment variables(.env).
+[CORS](https://www.npmjs.com/package/cors), middleware that can be used to enable CORS with various options.
+[Express-validator](https://www.npmjs.com/package/express-validator), middleware to help with validations.
+[Bcryptjs](https://www.npmjs.com/package/bcryptjs), improve security.
+[Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken), implementation, of json webtokens.
+## License
