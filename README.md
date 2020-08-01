@@ -11,8 +11,7 @@ npm run start:dev
 ```
 
 ## Built With
-//node
-[Node](https://nodejs.org/en/)
+[Node](https://nodejs.org/en/)  
 [Express](https://expressjs.com/), web Framework
 [Nodemon](https://www.npmjs.com/package/nodemon), automatically restarting the node application when file changes in the directory are detected.
 [Mongoose](https://mongoosejs.com/), to connnect node with Mongo.
