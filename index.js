@@ -26,8 +26,12 @@ dbConnection();
 // });
 
 //Rutas
-app.use('/api/usuarios', require ('./routes/usuarios-routes'));
-app.use('/api/login', require ('./routes/auth-routes'));
+app.use("/api/usuarios", require("./routes/usuarios-routes"));
+app.use("/api/hospital", require("./routes/hospital-routes"));
+app.use("/api/medicos", require("./routes/medico-routes"));
+app.use("/api/todo", require("./routes/busquedas-routes"));
+app.use("/api/upload", require("./routes/upload-route"));
+app.use("/api/login", require("./routes/auth-routes"));
 
 app.listen(process.env.PORT, () => {
   console.log("Servidor corriendo en puerto: " + 3000);

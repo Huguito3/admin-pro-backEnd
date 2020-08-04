@@ -16,7 +16,7 @@ const UsuarioSchema = Schema({
 
 //Revisar docuemntacao mongoose. Desestructuramos el reotnro del json del mongo, trae datos como la version, que no la queremos
 UsuarioSchema.method("toJSON", function () {
-  const { __v, _id, ...object } = this.toObject();
+  const { __v, _id,password, ...object } = this.toObject();
   //redefinimos el nombre del id para mostrarlo a la salida del json
   object.uid = _id;
   return object;

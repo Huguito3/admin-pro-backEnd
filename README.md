@@ -20,4 +20,6 @@ npm run start:dev
 [Express-validator](https://www.npmjs.com/package/express-validator), middleware to help with validations.  
 [Bcryptjs](https://www.npmjs.com/package/bcryptjs), improve security.  
 [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken), implementation, of json webtokens.  
+[Express - File Upload](https://www.npmjs.com/package/express-fileupload), Middleware to upload Files.  
+[Uuid] (https://www.npmjs.com/package/uuid), for the creation of RFC4122 UUIDs.  
 ## License
