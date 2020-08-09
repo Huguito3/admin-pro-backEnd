@@ -22,4 +22,5 @@ npm run start:dev
 [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken), implementation, of json webtokens.  
 [Express - File Upload](https://www.npmjs.com/package/express-fileupload), Middleware to upload Files.  
 [Uuid] (https://www.npmjs.com/package/uuid), for the creation of RFC4122 UUIDs.  
+[Serve-Index] (https://github.com/expressjs/serve-index), Serves pages that contain directory listings for a given path.  
 ## License
