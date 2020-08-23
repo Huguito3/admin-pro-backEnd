@@ -23,4 +23,5 @@ npm run start:dev
 [Express - File Upload](https://www.npmjs.com/package/express-fileupload), Middleware to upload Files.  
 [Uuid] (https://www.npmjs.com/package/uuid), for the creation of RFC4122 UUIDs.  
 [Serve-Index] (https://github.com/expressjs/serve-index), Serves pages that contain directory listings for a given path.  
+[Google-Sign-in] (https://developers.google.com/identity/sign-in/web/backend-auth), Google Authentication.  
 ## License

@@ -16,6 +16,9 @@ dbConnection();
 // console.log(process.env);
 // console.log(process.env.PORT)
 
+// Directorio Publico. Ao executar a url no navegodr veremos nosso index html
+app.use(express.static('public'));
+
 // Rutas
 //http://localhost:3000/
 // app.get("/", (req, res) => {
