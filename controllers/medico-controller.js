@@ -37,17 +37,66 @@ const createMedico = async (req, res = response) => {
 };
 
 const updateMedico = async (req, res = response) => {
-  res.json({
-    ok: true,
-    msg: "Update Medico",
-  });
+  const _id = req.params.uid;
+  const uid = req.uid;
+  try {
+    const medico = await Medico.findById(_id);
+    if (!medico) {
+      res.status(404).json({
+        ok: false,
+        msg: "El id no corresponde a un medico de la base",
+      });
+    }
+
+    const cambiosMedico = {
+      ...req.body,
+      usuario: uid,
+    };
+
+    const medicoAtualizado = await Medico.findByIdAndUpdate(
+      _id,
+      cambiosMedico,
+      { new: true }
+    );
+
+    res.json({
+      ok: true,
+      hospital: medicoAtualizado,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Error Inesperado.. revisar logs",
+    });
+  }
 };
 
 const deleteMedico = async (req, res = response) => {
-  res.json({
-    ok: true,
-    msg: "Delete Medico",
-  });
+  const _id = req.params.uid;
+
+  try {
+    const medico = await Medico.findById(_id);
+    if (!medico) {
+      res.status(404).json({
+        ok: false,
+        msg: "El Id no correspodne a un medico de la base",
+      });
+    }
+
+   await Medico.findByIdAndDelete(_id);
+    //Seria mejor guardar el usuario y no eliminar fisicamente, si no crear una variabel de flag.
+    res.json({
+      ok: true,
+      msg: "Medico Eliminado",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Error Inesperado.. revisar logs",
+    });
+  }
 };
 
 module.exports = { getMedicos, createMedico, updateMedico, deleteMedico };

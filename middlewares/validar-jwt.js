@@ -14,8 +14,8 @@ const validarJWT = (req = request, res, next) => {
 
   try {
     const {uid} = jwt.verify(token, process.env.JWT_TOKEN);
-    //Estamos em um middlewre que se va a ejecutar ante sdel obtener usuario
-    //Aqyu obtenems el uid del token que la persona hizo en el login, y lo grabamos en la req para que se peuda utilizar en 
+    //Estamos em um middlewre que se va a ejecutar antes del obtener usuario
+    //Aqyu obtenems el uid del token que la persona hizo en el login, y lo grabamos en la req para que se pueda utilizar en 
     //algun metodo mas adelante
     req.uid =uid;  
 

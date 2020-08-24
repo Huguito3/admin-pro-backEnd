@@ -82,4 +82,14 @@ const googleSignIn = async (req, res = response) => {
   }
 };
 
-module.exports = { login, googleSignIn };
+const renewToken = async (req, res = response) => {
+  const uid = req.uid;
+  const token = await generarJWT(uid);
+
+  res.json({
+    ok: true,
+    uid
+  });
+}
+
+module.exports = { login, googleSignIn, renewToken };

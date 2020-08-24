@@ -20,12 +20,20 @@ router.post(
   [
     validarJWT,
     check("nombre", "El nombre del hospital es necesario").not().isEmpty(),
-    validarCampos
+    validarCampos,
   ],
   createHospital
 );
 
-router.put("/:uid", [ validarJWT], updateHospital);
+router.put(
+  "/:uid",
+  [
+    validarJWT,
+    check("nombre", "El nombre del hospital es necesario").not().isEmpty(),
+    validarCampos,
+  ],
+  updateHospital
+);
 
 router.delete("/:uid", validarJWT, deleteHospitales);
 
