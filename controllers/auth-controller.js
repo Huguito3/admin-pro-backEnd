@@ -50,17 +50,20 @@ const googleSignIn = async (req, res = response) => {
     const { name, email, picture } = await googleVerify(googleToken);
     const usuarioDB = await Usuario.findOne({ email });
     let usuario;
+   
     if (!usuarioDB) {
+     
       usuario = new Usuario({
         nombre: name,
         email,
         password: "@@@",
-        img: picture,
+        image: picture,
         google: true,
       });
     } else {
       // si entro aqui es porque existe el usuario
       usuario = usuarioDB;
+      usuario.image = picture;
       usuario.google = true;
       // esto es apra sobreescribir al contrasena y que solo use el login de google. Si se intenta loga con email y @@@ no funciona
       usuario.password = "@@@";
@@ -86,12 +89,13 @@ const renewToken = async (req, res = response) => {
   const uid = req.uid;
   const token = await generarJWT(uid);
   const usuario = await Usuario.findById(uid);
-
+  console.log("usuario");
+  console.log(usuario);
   res.json({
     ok: true,
     token: token,
-    usuario
+    usuario,
   });
-}
+};
 
 module.exports = { login, googleSignIn, renewToken };
