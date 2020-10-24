@@ -13,5 +13,5 @@ router.use(expressfileUpload());
 
 router.put("/:tipo/:id", validarJWT, fileUpload);
 
-router.get("/:tipo/:foto", validarJWT, retornoImagen);
+router.get("/:tipo/:foto", retornoImagen);
 module.exports = router;
