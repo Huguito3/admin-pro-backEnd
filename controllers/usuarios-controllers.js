@@ -17,11 +17,10 @@ const getUsuarios = async (req, res) => {
   // desta forma es com oum forkjoin. Ejecutamos todas las promesas juntas.
   //la posicion uno del array es la promesa uno en este caso del usuario y al dos la del total
   const [usuarios, total] = await Promise.all([
-    Usuario.find({}, "nombre email role google image").skip(desde),
+    Usuario.find({}, "nombre email role google image").skip(desde).limit(5),
     // .limit(5),
     Usuario.countDocuments(),
   ]);
-
   res.json({
     ok: true,
     usuarios,
