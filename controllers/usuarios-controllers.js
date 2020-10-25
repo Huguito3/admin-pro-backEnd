@@ -17,10 +17,9 @@ const getUsuarios = async (req, res) => {
   // desta forma es com oum forkjoin. Ejecutamos todas las promesas juntas.
   //la posicion uno del array es la promesa uno en este caso del usuario y al dos la del total
   const [usuarios, total] = await Promise.all([
-    Usuario.find({}, "nombre email role google image")
-    .skip(desde),
+    Usuario.find({}, "nombre email role google image").skip(desde),
     // .limit(5),
-    Usuario.countDocuments()
+    Usuario.countDocuments(),
   ]);
 
   res.json({
@@ -88,12 +87,19 @@ const actualizarUsuario = async (req, res = response) => {
       if (existeEmail) {
         return res.status(400).json({
           ok: false,
-          msg: "Ya existe usuario con eses email",
+          msg: "Ya existe usuario con ese email",
         });
       }
     }
     // le anadimos el email modificado al objeto campos.
-    campos.email = email;
+    if (!usuarioDB.google) {
+      campos.email = email;
+    }else if(usuarioDB.email !== email){
+      return res.status(400).json({
+        ok: false,
+        msg: "Usuarios de Google no pueden cambiar su correo",
+      });
+    }
     //borramos los campos que no queremos mmodificar en la base.
     // delete campos.password; Como fiz a desestructuracion({password, google, email,...campos} ), ya no preciso borrarlos
     // delete campos.google;
