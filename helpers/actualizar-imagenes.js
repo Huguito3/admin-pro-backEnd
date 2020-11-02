@@ -12,18 +12,19 @@ const borrarImagen = (pathViejo) => {
 };
 const actualizarImagen = async (tipo, id, nombreArchivo) => {
   let pathViejo = "";
+
   switch (tipo) {
     case "medicos":
       const medico = await Medico.findById(id);
-      console.log(medico);
+      console.log(`MEDICO: ${medico}`);
       if (!medico) {
         console.log("No es un medico");
         return false;
       }
-
-      pathViejo = `./uploads/medicos/${medico.image}`;
-      borrarImagen(pathViejo);
-
+      if (medico.image) {
+        pathViejo = `./uploads/medicos/${medico.image}`;
+        borrarImagen(pathViejo);
+      }
       medico.image = nombreArchivo;
       await medico.save();
       return true;

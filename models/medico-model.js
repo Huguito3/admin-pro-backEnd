@@ -25,6 +25,7 @@ const MedicoSchema = Schema(
 //Revisar docuemntacao mongoose. Desestructuramos el retorno del json del mongo, trae datos como la version,
 //que no la queremos.
 MedicoSchema.method("toJSON", function () {
+  console.log(this.toObject());
   const { __v, ...object } = this.toObject();
   return object;
 });
