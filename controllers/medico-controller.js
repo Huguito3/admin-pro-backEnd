@@ -5,13 +5,33 @@ const Medico = require("../models/medico-model");
 
 const getMedicos = async (req, res = response) => {
   const medicos = await Medico.find()
-  .populate('usuario', 'nombre image')
-  .populate('hospital', 'nombre');
+    .populate("usuario", "nombre image")
+    .populate("hospital", "nombre");
 
   res.json({
     ok: true,
     medicos,
   });
+};
+
+const getMedicoById = async (req, res = response) => {
+  const id = req.params.uid;
+  try {
+    const medico = await Medico.findById(id)
+      .populate("usuario", "nombre image")
+      .populate("hospital", "nombre");
+  
+    res.json({
+      ok: true,
+      medico,
+    });
+    
+  } catch (error) {
+    res.json({
+      ok: false,
+      msg: 'Medico no encontrado'
+    });
+  }
 };
 
 const createMedico = async (req, res = response) => {
@@ -84,7 +104,7 @@ const deleteMedico = async (req, res = response) => {
       });
     }
 
-   await Medico.findByIdAndDelete(_id);
+    await Medico.findByIdAndDelete(_id);
     //Seria mejor guardar el usuario y no eliminar fisicamente, si no crear una variabel de flag.
     res.json({
       ok: true,
@@ -99,4 +119,4 @@ const deleteMedico = async (req, res = response) => {
   }
 };
 
-module.exports = { getMedicos, createMedico, updateMedico, deleteMedico };
+module.exports = { getMedicos, createMedico, updateMedico, deleteMedico, getMedicoById };
